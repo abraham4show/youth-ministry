@@ -194,10 +194,11 @@ const Contact = () => {
   const [status, setStatus] = useState("idle") // idle | sending | success | error
 
   const handleSubmit = async (e) => {
-  e.preventDefault()
-  setStatus("sending")
-  const form = e.target
-  const data = new FormData(form)
+  e.preventDefault();
+  setStatus("sending");
+  
+  const form = e.target;
+  const data = new FormData(form);
 
   // Prepare plain object for backend
   const payload = {
@@ -205,34 +206,49 @@ const Contact = () => {
     email: data.get("email"),
     subject: data.get("subject"),
     message: data.get("message"),
-  }
+  };
 
   try {
-    // 1️⃣ Send to your backend (MongoDB)
-    const res = await fetch("http://localhost:5000/api/contact", {
+    // 1️⃣ Send to your backend (MongoDB) - MAIN FLOW
+    const backendUrl = "https://hfc-youth-leadership-backend.onrender.com";
+    console.log("Sending to backend:", payload);
+    
+    const res = await fetch(`${backendUrl}/api/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-    })
+    });
 
-    // 2️⃣ Send to Formspree
-    await fetch("https://formspree.io/f/xwpqdbva", {
-      method: "POST",
-      body: data,
-      headers: { Accept: "application/json" },
-    })
+    // Check what the backend actually responded
+    const responseData = await res.json();
+    console.log("Backend response:", responseData);
+    console.log("Backend status:", res.status);
 
     if (res.ok) {
-      setStatus("success")
-      form.reset()
+      setStatus("success");
+      form.reset();
     } else {
-      setStatus("error")
+      setStatus("error");
+      console.error("Backend error:", responseData);
     }
+
+    // 2️⃣ Send to Formspree (secondary - don't let it affect main flow)
+    // Formspree expects FormData, not JSON
+    fetch("https://formspree.io/f/xwpqdbva", {
+      method: "POST",
+      body: data, // Send FormData directly
+      // REMOVE the Content-Type header - let the browser set it automatically
+      // with the correct boundary for FormData
+    })
+    .then(formspreeRes => formspreeRes.json())
+    .then(formspreeData => console.log("Formspree response:", formspreeData))
+    .catch(err => console.error("Formspree submission error:", err));
+
   } catch (err) {
-    console.error("❌ Error submitting contact:", err)
-    setStatus("error")
+    console.error("❌ Error submitting contact:", err);
+    setStatus("error");
   }
-}
+};
 
   return (
     <div className="min-h-screen bg-white">
@@ -269,8 +285,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">Email</h3>
-                  <p className="text-gray-600">info@leadershipflock.org</p>
-                  <p className="text-gray-600">youth@leadershipflock.org</p>
+                  <p className="text-gray-600">hfcnationalyouths@gmail.com</p>
+                  {/* <p className="text-gray-600">hfcnationalyouths@gmail.com</p> */}
                 </div>
               </div>
 
@@ -280,10 +296,11 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">Phone</h3>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
-                  <p className="text-gray-600">WhatsApp: +1 (555) 987-6543</p>
+                  <p className="text-gray-600">+234 (802) 976-0061</p>
+                  <p className="text-gray-600">WhatsApp: +234 (802) 396-7837</p>
                 </div>
               </div>
+             
 
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -291,8 +308,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">Location</h3>
-                  <p className="text-gray-600">123 Faith Street</p>
-                  <p className="text-gray-600">City, State 12345</p>
+                  <p className="text-gray-600">45 okepopo street,</p>
+                  <p className="text-gray-600"> Lagos Island</p>
                 </div>
               </div>
             </div>

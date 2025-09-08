@@ -27,18 +27,18 @@ const Leadership = () => {
       bio: "Mr Bola has a heart for helping young youth navigate life's challenges through faith. He leads our youths' small groups and provides biblical counseling. Her gentle spirit and wisdom make her a trusted mentor.",
       image: img4,
       email: "Osinbowale@leadershipflock.org",
-      phone: "(555) 123-4570",
+      phone: "(234) 803 455-2106",
       specialties: ["Women's Ministry", "Biblical Counseling", "Life Coaching"],
     },
     
     {
       id: 2,
-      name: "Mr Agboola Adedayo",
-      title: "Associate Youth Pastor",
+      name: "Sorinwa A Adedayo John",
+      title: "National Youth President / coordinator",
       bio: "Pastor Lisa brings energy and creativity to our ministry. She specializes in worship leading and small group facilitation. Her heart for authentic community has helped countless young people find their place in God's family.",
       image: img2,
-      email: "lisa@leadershipflock.org",
-      phone: "(555) 123-4568",
+      email: "sorinwaj@gmail.com",
+      phone: "(123) 802-976-0061",
       specialties: ["Worship Leading", "Small Groups", "Community Building"],
     },
     {
@@ -48,7 +48,7 @@ const Leadership = () => {
       bio: "Mr Jide Coker is a former youth group member who now serves as a leader. His testimony of transformation through Christ inspires many. He coordinates our community outreach programs and mission trips.",
       image: img3,
       email: "david@leadershipflock.org",
-      phone: "(555) 123-4569",
+      phone: "(234) 803-786-0784",
       specialties: ["Outreach Programs", "Mission Trips", "Peer Mentoring"],
     },
     

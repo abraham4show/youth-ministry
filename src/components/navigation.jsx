@@ -95,11 +95,18 @@
 
 
 
+
+
+
+
 "use client"
 
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa"  // ✅ Changed here
+import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa"
+
+// Import your logo
+import logo from "../assets/logo.png"
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -157,8 +164,16 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
+          {/* Logo with responsive behavior */}
           <Link to="/" className="flex items-center space-x-2 hover-lift">
-            <span className=" font-bold text-primary">THE HOLY FLOCK OF CHRIST YOUTH MINISTRY</span>
+            <img 
+              src={logo} 
+              alt="The Holy Flock of Christ Youth Ministry Logo" 
+              className="h-12 w-12 md:h-12 md:w-12 object-contain"
+            />
+            <span className="hidden md:block font-bold text-primary">
+              THE HOLY FLOCK OF CHRIST YOUTH MINISTRY
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -192,7 +207,7 @@ const Navigation = () => {
                   }`}
                 >
                   <span>{dropdown.name}</span>
-                  <FaChevronDown   // ✅ Changed icon
+                  <FaChevronDown
                     className={`w-4 h-4 transition-transform duration-300 ${
                       activeDropdown === dropdown.name ? "rotate-180" : ""
                     }`}

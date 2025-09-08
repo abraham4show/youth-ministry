@@ -375,11 +375,15 @@
 
 
 
-
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
-import Img7 from "../assets/img3.jpeg"; // Fixed variable name
+import Img7 from "../assets/img3.jpeg";
+import Img1 from "../assets/contactHero.jpg";
+import Img2 from "../assets/resoursesHero.jpg";
+import Img3 from "../assets/gallery3.jpg";
+import Img4 from "../assets/gallery6.jpg";
 
 import {
   FaUsers,
@@ -391,50 +395,97 @@ import {
   FaPhotoVideo,
 } from "react-icons/fa";
 
+// HeroSection Component
+const HeroSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // Array of hero images for the carousel
+  const heroImages = [Img1, Img2, Img3, Img4, Img7];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => 
+        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
+
+  return (
+    <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
+      {/* Background Image Carousel */}
+      <div className="absolute inset-0">
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              // Remove fixed attachment for mobile
+              backgroundAttachment: window.innerWidth > 768 ? "fixed" : "scroll",
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Text content */}
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 px-2 md:px-6">
+          Welcome to The Holy Flock of Christ{" "}
+          <span className="text-green-500 animate-pulse"> Youth Ministry</span>
+        </h1>
+        <p className="text-base sm:text-lg text-gray-200 mb-4 md:mb-6">
+          We are a vibrant, Christ-centered youth community passionate about
+          raising leaders who influence their world with Godly values.
+        </p>
+        <blockquote className="italic text-lg sm:text-xl text-green-400 font-semibold mb-6 md:mb-10">
+          2 Timothy 2:22 — "So flee youthful passions and pursue righteousness,
+          faith, love, and peace, along with those who call on the Lord from a
+          pure heart."
+        </blockquote>
+        <Link
+          to="/about"
+          className="inline-block px-5 py-2 md:px-6 md:py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-all duration-300 transform hover:scale-105"
+        >
+          Learn More About Us
+        </Link>
+      </div>
+
+      {/* Navigation dots (optional) */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-3 z-10">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all ${
+              index === currentIndex ? "bg-green-500 scale-125" : "bg-white/60"
+            }`}
+            onClick={() => setCurrentIndex(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+// The rest of your Home component remains the same...
+
 // Home Page
 const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-
-      {/* Fullscreen Hero Section */}
-      <section
-        className="relative h-screen flex items-center justify-center text-center"
-        style={{
-          backgroundImage: `url(${Img7})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
-
-        {/* Text content */}
-        <div className="relative z-10 text-center px-8 animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 px-6">
-            Welcome to The Holy Flock of Christ{" "}
-            <span className="text-green-500 animate-pulse"> Youth Ministry</span>
-          </h1>
-          <p className="text-lg text-gray-200 mb-6">
-            We are a vibrant, Christ-centered youth community passionate about
-            raising leaders who influence their world with Godly values. Our heart
-            is to inspire, equip, and empower every youth to step into their
-            God-given purpose.
-          </p>
-          <blockquote className="italic text-xl text-green-400 font-semibold mb-10">
-            2 Timothy 2:22 — "So flee youthful passions and pursue righteousness,
-            faith, love, and peace, along with those who call on the Lord from a
-            pure heart."
-          </blockquote>
-          <Link
-            to="/about"
-            className="inline-block px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-all duration-300"
-          >
-            Learn More About Us
-          </Link>
-        </div>
-      </section>
+      
+      {/* Use the HeroSection component */}
+      <HeroSection />
 
       {/* Inspirational Quote */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">

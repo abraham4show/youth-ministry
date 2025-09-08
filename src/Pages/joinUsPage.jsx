@@ -341,65 +341,9 @@ const Join = () => {
     }
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   if (!formData.agreement) return
 
-  //   try {
-  //     setIsSubmitting(true)
 
-  //     const payload = new FormData()
-  //     payload.append("First Name", formData.firstName)
-  //     payload.append("Last Name", formData.lastName)
-  //     payload.append("Email", formData.email)
-  //     payload.append("Phone", formData.phone)
-  //     payload.append("Age", formData.age)
-  //     payload.append("Church", formData.church)
-  //     payload.append("Involvement", formData.involvement)
-  //     payload.append("Interests", formData.interests.join(", "))
-  //     payload.append("Experience", formData.experience)
-  //     payload.append("Goals", formData.goals)
-  //     payload.append("Wants Updates", formData.updates ? "Yes" : "No")
-  //     payload.append("_subject", "New Join Application - Leadership of the Flock")
-
-  //     const res = await fetch("https://formspree.io/f/xwpqdboa", {
-  //       method: "POST",
-  //       body: payload,
-  //       headers: { Accept: "application/json" },
-  //     })
-
-  //     if (res.ok) {
-  //       setIsSent(true)
-        
-  //       setFormData({
-  //         firstName: "",
-  //         lastName: "",
-  //         email: "",
-  //         phone: "",
-  //         age: "",
-  //         church: "",
-  //         involvement: "member",
-  //         interests: [],
-  //         experience: "",
-  //         goals: "",
-  //         agreement: false,
-  //         updates: false,
-  //       })
-        
-
-  //       setTimeout(() => setIsSent(false), 10000)
-  //     } else {
-  //       const data = await res.json().catch(() => ({}))
-  //       alert(data?.error || "Something went wrong submitting the form.")
-  //     }
-  //   } catch (err) {
-  //     alert("Network error submitting the form.")
-  //   } finally {
-  //     setIsSubmitting(false)
-  //   }
-  // }
-
- const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   if (!formData.agreement) return;
 
@@ -407,7 +351,9 @@ const Join = () => {
     setIsSubmitting(true);
 
     // 1️⃣ Send to your Node.js API (MongoDB)
-    const res = await fetch("http://localhost:5000/api/joinus", {
+    // ✅ FIX: Hardcode the backend URL since environment variable is undefined
+    const backendUrl = "https://hfc-youth-leadership-backend.onrender.com";
+    const res = await fetch(`${backendUrl}/api/joinus`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -445,7 +391,6 @@ const Join = () => {
       // ✅ Reset + Success
       setIsSent(true);
       
-      // Define initialState inline instead of using an undefined variable
       setFormData({
         firstName: "",
         lastName: "",
