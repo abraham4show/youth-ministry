@@ -119,26 +119,29 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Contact</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center space-x-2 text-gray-600">
-                <FaPhone className="w-4 h-4" />
-                <span className="w-40" >+234 (802) 976-0061</span>
-                <FaPhone className="w-4 h-4" />
-                <span className="w-40">+234 (802) 396-7837</span>
-              </li>
-              <li className="flex items-center space-x-2 text-gray-600">
-                <FaEnvelope className="w-4 h-4" />
-                <span>hfcnationalyouths@gmail.com</span>
-              </li>
-              <li className="flex items-center space-x-2 text-gray-600">
-                <FaMapMarkerAlt className="w-4 h-4" />
-                <span>45 okepopo street, Lagos Island</span>
-              </li>
-            </ul>
-          </div>
+        {/* Contact Info */}
+<div>
+  <h3 className="font-semibold text-gray-900 mb-4">Contact</h3>
+  <ul className="space-y-2">
+    <li className="flex items-center space-x-2 text-gray-600">
+      <FaPhone className="w-4 h-4" />
+      <span className="w-40">+234 (802) 976-0061</span>
+    </li>
+    <li className="flex items-center space-x-2 text-gray-600">
+      <FaPhone className="w-4 h-4" />
+      <span className="w-40">+234 (802) 396-7837</span>
+    </li>
+    <li className="flex items-center space-x-2 text-gray-600">
+      <FaEnvelope className="w-4 h-4" />
+      <span>hfcnationalyouths@gmail.com</span>
+    </li>
+    <li className="flex items-center space-x-2 text-gray-600">
+      <FaMapMarkerAlt className="w-4 h-4" />
+      <span>45 Okepopo Street, Lagos Island</span>
+    </li>
+  </ul>
+</div>
+
         </div>
 
         {/* Bottom Text */}

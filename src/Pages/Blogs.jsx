@@ -2,6 +2,11 @@ import Navigation from "../components/navigation"
 import Footer from "../components/footer"
 import { FaCalendarAlt, FaUser, FaTag } from "react-icons/fa"
 import Img3 from "../assets/img3.jpeg"
+import blog from "../assets/blug.jpg"
+ import charity from "../assets/gallery16.jpg"
+import event2 from "../assets/soapMaking1.jpg"
+// import event3 from "../assets/event3.jpg"
+// import event4 from "../assets/event4.jpg"
 
 const Blog = () => {
   const blogPosts = [
@@ -13,38 +18,44 @@ const Blog = () => {
       author: "Pastor Michael",
       date: "March 15, 2025",
       category: "Upcoming Event",
-      image: "/youth-leadership-conference.png",
+      image: Img3,
+      link: "/gallery",
       featured: true,
     },
     {
       id: 2,
-      title: "How God Changed My Heart - Sarah's Testimony",
-      excerpt:
-        "Sarah shares her powerful journey from doubt to faith, and how joining our youth ministry transformed her relationship with God.",
+    title: "Empowering Youths Through Skill Acquisition",
+excerpt:
+  "Our youth empowerment workshop equipped participants with practical skills such as soap making, snacks production, and other crafts — helping them build confidence, creativity, and financial independence.",
+
       author: "Sarah Johnson",
       date: "March 10, 2025",
       category: "Testimony",
-      image: "/young-woman-praying.png",
+      image: event2,
+      link: "/gallery",
     },
     {
       id: 3,
-      title: "Feeding the Homeless Initiative Success",
-      excerpt:
-        "Our youth team served over 200 meals to the homeless community, showing Christ's love through action and service.",
+   title: "Evangelism and Charity Outreach",
+excerpt:
+  "Following our evangelism mission, the youth group extended kindness by distributing foodstuffs to the community, demonstrating God’s love in action.",
+
       author: "Youth Team",
       date: "March 8, 2025",
       category: "Community Impact",
-      image: "/youth-serving-homeless.png",
+      image: charity,
+      link: "/gallery",
     },
     {
       id: 4,
-      title: "Finding Your Purpose in God's Plan",
+      title: "Visit to the Point of No Return, Gberefu Island, Badagry, Lagos",
       excerpt:
-        "Discover how to align your passions and talents with God's calling on your life through prayer and community discernment.",
-      author: "Pastor Lisa",
-      date: "March 5, 2025",
-      category: "Spiritual Growth",
-      image: "/young-person-reading-bible.png",
+        "A memorable trip where our youth connected with history, faith, and purpose at the historic Point of No Return on Gberefu Island in Badagry, Lagos.",
+      author: "HFC Youth Team",
+      date: "February 25, 2025",
+      category: "Youth Excursion",
+      image: blog,
+      link: "https://empirephotos.pixieset.com/pointofnoreturnongberefuislandinbadagrylagos/",
     },
   ]
 
@@ -52,32 +63,29 @@ const Blog = () => {
     <div className="min-h-screen bg-white">
       <Navigation />
 
-      
-         
-           {/* Hero Section with Background Image */}
-                <section
-                  className="relative h-screen flex items-center justify-center text-center"
-                  style={{
-                    backgroundImage: `url(${Img3})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundAttachment: "fixed",
-                  }}
-                >
-                  {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-          
-                  {/* Hero content */}
-                  <div className="relative z-10 px-4 sm:px-6 lg:px-8">
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Blog</h1>
-                    <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
-                      Stay connected with upcoming events, inspiring testimonies, and stories of God's work in our community
-                    </p>
-                  </div>
-                </section>
-                <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      {/* Hero Section */}
+      <section
+        className="relative h-screen flex items-center justify-center text-center"
+        style={{
+          backgroundImage: `url(${Img3})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
+        <div className="relative z-10 px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Blog</h1>
+          <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+            Stay connected with upcoming events, inspiring testimonies, and stories of God's work in our community
+          </p>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Blog Posts */}
             <div className="lg:col-span-2">
@@ -89,7 +97,7 @@ const Blog = () => {
                   }`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <img src={Img3} alt={post.title} className="w-full h-64 object-cover" />
+                  <img src={post.image} alt={post.title} className="w-full h-64 object-cover" />
                   <div className="p-6">
                     <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
                       <span className="inline-flex items-center gap-1">
@@ -109,9 +117,16 @@ const Blog = () => {
                       {post.title}
                     </h2>
                     <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                    <button className="text-green-600 hover:text-green-700 font-medium transition-colors duration-300">
+
+                    {/* Read More as Link */}
+                    <a
+                      href={post.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-600 hover:text-green-700 font-medium transition-colors duration-300"
+                    >
                       Read Full Post →
-                    </button>
+                    </a>
                   </div>
                 </article>
               ))}

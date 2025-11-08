@@ -26,10 +26,28 @@ const Leadership = () => {
       title: "Spiritual Leader",
       bio: "Mr Bola has a heart for helping young youth navigate life's challenges through faith. He leads our youths' small groups and provides biblical counseling. Her gentle spirit and wisdom make her a trusted mentor.",
       image: img4,
-      email: "Osinbowale@leadershipflock.org",
-      phone: "(234) 803 455-2106",
+      // email: "Osinbowale@leadershipflock.org",
+      // phone: "(234) 803 455-2106",
       specialties: ["Women's Ministry", "Biblical Counseling", "Life Coaching"],
     },
+    
+  {
+  id: 3,
+  name: "Venerable Dr Jide Coker",
+  title: "Youth Chaplain, Holy Flock of Christ",
+  bio: "Venerable Dr Jide Coker was appointed by the Spiritual-Leader-in-Council to serve as the Youth Chaplain for the Holy Flock of Christ. In this role, he provides spiritual guidance and leadership advice to the HFC youths worldwide. He acts as a liaison between the Youth Group and the Council of Elders, coordinating monthly fatherly blessings and prayers. He participates in youth thanksgiving services and retreats, offers counseling to identified youths, and assists in mobilizing material and financial resources to support youth initiatives. Venerable Dr Coker also upholds discipline within the Youth Group, helps secure approvals for youth activities, and collaborates with the Youth Executive Committee in planning, implementing, and evaluating annual programs for spiritual and personal growth.",
+  image: img3,
+  // email: "david@leadershipflock.org",
+  // phone: "(234) 803-786-0784",
+  specialties: [
+    "Spiritual Leadership",
+    "Youth Guidance",
+    "Outreach Coordination",
+    "Program Planning",
+    "Counseling & Mentorship"
+  ],
+},
+
     
     {
       id: 2,
@@ -37,19 +55,9 @@ const Leadership = () => {
       title: "National Youth President / coordinator",
       bio: "Pastor Lisa brings energy and creativity to our ministry. She specializes in worship leading and small group facilitation. Her heart for authentic community has helped countless young people find their place in God's family.",
       image: img2,
-      email: "sorinwaj@gmail.com",
-      phone: "(123) 802-976-0061",
+      // email: "sorinwaj@gmail.com",
+      // phone: "(123) 802-976-0061",
       specialties: ["Worship Leading", "Small Groups", "Community Building"],
-    },
-    {
-      id: 3,
-      name: " Venerable Jide Coker",
-      title: "Youth Leader & Outreach Coordinator",
-      bio: "Mr Jide Coker is a former youth group member who now serves as a leader. His testimony of transformation through Christ inspires many. He coordinates our community outreach programs and mission trips.",
-      image: img3,
-      email: "david@leadershipflock.org",
-      phone: "(234) 803-786-0784",
-      specialties: ["Outreach Programs", "Mission Trips", "Peer Mentoring"],
     },
     
   ]
@@ -121,7 +129,7 @@ const Leadership = () => {
                     {/* Contact */}
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-gray-600">
-                        <FaEnvelope className="w-4 h-4" />
+                        {/* <FaEnvelope className="w-4 h-4" /> */}
                         <Link
                           to={`mailto:${leader.email}`}
                           className="hover:text-green-600 transition-colors duration-300"
@@ -130,7 +138,7 @@ const Leadership = () => {
                         </Link>
                       </div>
                       <div className="flex items-center gap-2 text-gray-600">
-                        <FaPhone className="w-4 h-4" />
+                        {/* <FaPhone className="w-4 h-4" /> */}
                         <Link
                           to={`tel:${leader.phone}`}
                           className="hover:text-green-600 transition-colors duration-300"
