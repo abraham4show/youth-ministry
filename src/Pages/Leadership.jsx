@@ -5,7 +5,7 @@ import { FaEnvelope, FaPhone, FaGraduationCap, FaHeart } from "react-icons/fa"
 import Img3 from "../assets/img3.jpeg"
 import img2 from "../assets/leaderShip1.jpg"
 import img3 from "../assets/leaderShip2.jpg"
-import img4 from "../assets/leaderShip3.jpg"
+import img4 from "../assets/mrbola.jpeg"
 
 
 const Leadership = () => {
@@ -20,16 +20,26 @@ const Leadership = () => {
     //   phone: "(555) 123-4567",
     //   specialties: ["Leadership Development", "Biblical Teaching", "Mentorship"],
     // },
-    {
-      id: 4,
-      name: "Most Venerable Bola Osinbowale",
-      title: "Spiritual Leader",
-      bio: "Mr Bola has a heart for helping young youth navigate life's challenges through faith. He leads our youths' small groups and provides biblical counseling. Her gentle spirit and wisdom make her a trusted mentor.",
-      image: img4,
-      // email: "Osinbowale@leadershipflock.org",
-      // phone: "(234) 803 455-2106",
-      specialties: ["Women's Ministry", "Biblical Counseling", "Life Coaching"],
-    },
+{
+  id: 4,
+  name: "Most Venerable Bola Osinbowale",
+  title: "Spiritual Leader",
+  bio: `Most Venerable Bola Osinbowale was born on 26th February 1942 to the late Most Venerable J. O. Osinbowale, former Spiritual Leader of the Holy Flock of Christ, and Mrs. Dorcas Olayinka Osinbowale (née Adesanya), a Deaconess of the Church.
+
+Educated at St. James’s School Okebola, Children’s Home School Ibadan, King’s College Lagos, and Ibadan Grammar School, he excelled academically and later pursued further studies in the United Kingdom. A gifted sportsman, he represented Nigeria in international tournaments and became a respected expert in sports facility construction.
+
+A lifelong member of Ikoyi Club, he remains celebrated as one of its longest-standing squash champions.
+
+Spiritually, he grew through the Afunpe Sect of the Holy Flock of Christ, rising from Superintendent (Ateno Igbala) to Senior Elder (Alagba Agba), and now serves faithfully as the worldwide Spiritual Leader (Asiwaju). He is married, blessed with children, and continues to serve God and humanity with dedication and grace.`,
+  image: img4,
+ specialties: [
+  "Spiritual Leadership",
+  "Faith Development",
+  "Community Service",
+  "Sports Ministry",
+]
+}
+,
     
   {
   id: 3,

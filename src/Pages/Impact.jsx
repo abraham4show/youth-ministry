@@ -1,9 +1,10 @@
 import Navigation from "../components/navigation"
 import Footer from "../components/footer"
 import { FaHeart, FaUsers, FaGift, FaStar, FaChartLine } from "react-icons/fa"
-import Img3 from "../assets/img3.jpeg"
+import Img3 from "../assets/charity.jpg"
 import charity1 from "../assets/soapMaking1.jpg"
 import catering from "../assets/catering.jpg"
+import Img4 from "../assets/img3.jpeg"
 
 
 
@@ -39,15 +40,15 @@ const Impact = () => {
       title: "humanitarian aid",
       description:
         "We transformed an empty lot into a thriving community garden that provides fresh produce to local food banks and teaches sustainable living practices.",
-      image: Img3,
+      image: Img4,
       impact: "500+ lbs of produce donated",
       category: "Environmental",
     },
     {
       id: 4,
-      title: "Youth Leadership Training",
+      title: "Evangelism and Charity Outreach",
       description:
-        "We've trained over 25 young leaders who now serve in various capacities in our church and community, multiplying our impact exponentially.",
+        "Following our evangelism mission, the youth group extended kindness by distributing foodstuffs to the community, demonstrating God’s love in action.",
       image: Img3,
       impact: "25+ leaders equipped",
       category: "Leadership Development",
@@ -86,7 +87,7 @@ const Impact = () => {
       <section
         className="relative h-screen flex items-center justify-center text-center"
         style={{
-          backgroundImage: `url(${Img3})`,
+          backgroundImage: `url(${Img4})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
