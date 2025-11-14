@@ -131,51 +131,52 @@ import {
 
 
 export default function EventsPage() {
-  const upcomingEvents = [
-    {
-      id: 1,
-      title: "Leadership Summit 2025",
-      date: "Agust 9, 2025",
-      time: "9:00 AM - 5:00 PM",
-      location: "Daystar church compound",
-      description:
-        "A three-day intensive leadership training program featuring workshops, guest speakers, and networking opportunities.",
-      category: "Conference",
-      spots: "25 spots left",
-    },
-    {
-      id: 2,
-      title: "YEAR 2025 NATIONAL YOUTH RETREAT",
-      date: "September 3rd - 7th, 2025",
-      time: " 10:00 AM",
-      location: "The Holy Flock Of Christ Ihima (Kogi State)",
-      description:
-        "THEME: Ebenezar (1st Samuel 7:12)",
-      category: "Retreat",
-      spots: "Open to all",
-    },
-    {
-      id: 3,
-      title: "Community Service Day",
-      date: "March 30, 2024",
-      time: "8:00 AM - 4:00 PM",
-      location: "Various Locations",
-      description:
-        "Put leadership into action by serving our local community through various volunteer opportunities.",
-      category: "Service",
-      spots: "50 volunteers needed",
-    },
-    {
-      id: 4,
-      title: "Bible Study & Leadership",
-      date: "April 5, 2024",
-      time: "6:30 PM - 8:00 PM",
-      location: "Church Hall",
-      description:
-        "Explore biblical principles of leadership through interactive study and discussion.",
-      category: "Study",
-      spots: "Open to all",
-    },
+  
+   const upcomingEvents = [
+  {
+    id: 1,
+    title: "2025 ANNUAL CONVENTION - OPEN AIR SERVICE",
+    date: "Thursday, 4th December 2025",
+    time: "5:00 PM",
+    location: "Amute Playing Ground, Lagos",
+    description:
+      "DIVINE SERVICE & THANKSGIVING. Preacher: Ven. J. O. Bailey (Hqtrs).",
+    category: "Convention",
+    spots: "Open to all",
+  },
+  {
+    id: 2,
+    title: "2025 ANNUAL CONVENTION - OPEN AIR SERVICE",
+    date: "Sunday, 7th December 2025",
+    time: "3:00 PM",
+    location: "Adeniji Adele Phase 2 Car Park",
+    description:
+      "Preacher: Snr. Supt. Pastor E. O. Oyelana (Irolu).",
+    category: "Convention",
+    spots: "Open to all",
+  },
+  {
+    id: 3,
+    title: "2025 ANNUAL CONVENTION - OPEN AIR SERVICE",
+    date: "Thursday, 11th December 2025",
+    time: "5:00 PM",
+    location: "Evans Square Playground",
+    description:
+      "Preacher: Pastor Muyiwa Ojo (Ijeshatedo).",
+    category: "Convention",
+    spots: "Open to all",
+  },
+  {
+    id: 4,
+    title: "2025 ANNUAL CONVENTION - REVIVAL THANKSGIVING SERVICE",
+    date: "Sunday, 14th December 2025",
+    time: "10:00 AM",
+    location: "House of Prayer, 45 Okepopo Street, Lagos",
+    description:
+      "Preacher: Ven. Olawale Tubi (Hqtrs).",
+    category: "Thanksgiving",
+    spots: "Open to all",
+  },
   ];
 
   return (
