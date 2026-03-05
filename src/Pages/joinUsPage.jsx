@@ -291,13 +291,16 @@
 
 
 
-import { useState } from "react"
-import Navigation from "../components/navigation"
-import Footer from "../components/footer"
-import { FaUserPlus, FaHeart, FaGraduationCap, FaCheckCircle } from "react-icons/fa"
-import HeroImg from "../assets/joinUs.jpg" // <-- change if you prefer a different image
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom"; // <-- add this
+import Navigation from "../components/navigation";
+import Footer from "../components/footer";
+import { FaUserPlus, FaHeart, FaGraduationCap, FaCheckCircle } from "react-icons/fa";
+import HeroImg from "../assets/joinUs.jpg";
 
 const Join = () => {
+  const navigate = useNavigate(); // <-- add
+  const location = useLocation(); // <-- add
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -311,9 +314,9 @@ const Join = () => {
     goals: "",
     agreement: false,
     updates: false,
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSent, setIsSent] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSent, setIsSent] = useState(false);
 
   const interestOptions = [
     "Leadership Development",
@@ -323,105 +326,96 @@ const Join = () => {
     "Event Planning",
     "Mentoring Others",
     "Media & Communications",
-  ]
+  ];
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     if (type === "checkbox" && name === "interests") {
       setFormData((prev) => ({
         ...prev,
         interests: checked
           ? [...prev.interests, value]
           : prev.interests.filter((i) => i !== value),
-      }))
+      }));
     } else if (type === "checkbox") {
-      setFormData((prev) => ({ ...prev, [name]: checked }))
+      setFormData((prev) => ({ ...prev, [name]: checked }));
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }))
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
-  }
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.agreement) {
+      alert("Please agree to the community guidelines.");
+      return;
+    }
 
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!formData.agreement) return;
-
-  try {
     setIsSubmitting(true);
 
-    // 1️⃣ Send to your Node.js API (MongoDB)
-    // ✅ FIX: Hardcode the backend URL since environment variable is undefined
-    const backendUrl = "https://hfc-youth-leadership-backend.onrender.com";
-    const res = await fetch(`${backendUrl}/api/joinus`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    let data;
-    let text = await res.text();
     try {
-      data = JSON.parse(text);
-    } catch {
-      data = { message: text };
-    }
-    console.log("📡 API Response:", res.status, data);
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://hfc-youth-leadership-backend.onrender.com";
 
-    if (res.ok) {
-      // 2️⃣ Also send to Formspree
-      const payload = new FormData();
-      payload.append("First Name", formData.firstName);
-      payload.append("Last Name", formData.lastName);
-      payload.append("Email", formData.email);
-      payload.append("Phone", formData.phone);
-      payload.append("Age", formData.age);
-      payload.append("Church", formData.church);
-      payload.append("Involvement", formData.involvement);
-      payload.append("Interests", formData.interests.join(", "));
-      payload.append("Experience", formData.experience);
-      payload.append("Goals", formData.goals);
+      const res = await fetch(`${backendUrl}/api/users/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+        }),
+      });
+
+      let data;
+      try {
+        data = await res.json();
+      } catch {
+        data = { message: "Unknown response" };
+      }
+
+      if (!res.ok) {
+        throw new Error(data.error || "Registration failed");
+      }
+
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      const formspreePayload = new FormData();
+      formspreePayload.append("First Name", formData.firstName);
+      formspreePayload.append("Last Name", formData.lastName);
+      formspreePayload.append("Email", formData.email);
+      formspreePayload.append("Phone", formData.phone);
+      formspreePayload.append("Age", formData.age);
+      formspreePayload.append("Church", formData.church);
+      formspreePayload.append("Involvement", formData.involvement);
+      formspreePayload.append("Interests", formData.interests.join(", "));
+      formspreePayload.append("Experience", formData.experience);
+      formspreePayload.append("Goals", formData.goals);
 
       await fetch("https://formspree.io/f/xwpqdboa", {
         method: "POST",
-        body: payload,
+        body: formspreePayload,
         headers: { Accept: "application/json" },
-      });
+      }).catch(err => console.warn("Formspree backup failed:", err));
 
-      // ✅ Reset + Success
       setIsSent(true);
-      
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        age: "",
-        church: "",
-        involvement: "member",
-        interests: [],
-        experience: "",
-        goals: "",
-        agreement: false,
-        updates: false,
-      });
-      
       setTimeout(() => setIsSent(false), 10000);
-      alert("✅ Application submitted successfully!");
-    } else {
-      console.error("❌ Server error:", data);
-      alert(data.error || "Something went wrong. Please try again.");
+      alert("✅ Registration successful!");
+
+      const params = new URLSearchParams(location.search); // now works
+      const returnTo = params.get("returnTo");
+      if (returnTo) {
+        navigate(returnTo); // use navigate instead of window.location
+      } else {
+        navigate("/motivational");
+      }
+    } catch (error) {
+      console.error("❌ Registration error:", error);
+      alert(error.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (err) {
-    console.error("❌ Network error:", err);
-    alert("Something went wrong. Please try again.");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
-
-  
 
   return (
     <div className="min-h-screen bg-white">

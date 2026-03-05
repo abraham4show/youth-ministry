@@ -135,6 +135,7 @@ const Navigation = () => {
         { name: "Testimonies", path: "/testimonies" },
         { name: "Leadership", path: "/leadership" },
         { name: "Impact", path: "/impact" },
+        { name: "motivational", path: "/motivational"},
       ],
     },
     {
