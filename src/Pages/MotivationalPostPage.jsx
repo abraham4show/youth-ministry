@@ -6,6 +6,7 @@ import { deliveryClient } from "../contentful";
 import { PostCard } from "../components/PostCard";
 import { FaArrowLeft } from "react-icons/fa";
 import { useUser } from '../hooks/useUser';
+import { Helmet } from 'react-helmet-async';
 
 export default function MotivationalPostPage() {
   const user = useUser();
@@ -17,7 +18,6 @@ export default function MotivationalPostPage() {
 
   useEffect(() => {
     if (!user) {
-      // Redirect to join page with return URL
       navigate(`/join?returnTo=${encodeURIComponent(location.pathname)}`);
     }
   }, [user, navigate, location]);
@@ -73,24 +73,54 @@ export default function MotivationalPostPage() {
     );
   }
 
+  const { fields, sys } = post;
+  // Replace with your actual domain
+  const siteUrl = "https://hfc-youth-ministry.netlify.app"; // your Netlify domain
+  const postUrl = `${siteUrl}/motivational/${sys.id}`;
+
+  // If you have an image field in Contentful, use it; otherwise use a default
+  const imageUrl = fields.image?.fields?.file?.url 
+    ? `https:${fields.image.fields.file.url}` 
+    : `${siteUrl}/default-og-image.jpg`; // make sure you have a default image
+
+  const description = fields.content
+    ? fields.content.split('\n')[0].substring(0, 160) + '...'
+    : 'Read this motivational message from our community.';
+
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-      <div className="bg-gray-50 border-b border-gray-200 mt-16 md:mt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link 
-            to="/motivational" 
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors group"
-          >
-            <FaArrowLeft className="text-sm transition-transform duration-300 group-hover:-translate-x-1" />
-            Back to all posts
-          </Link>
+    <>
+      <Helmet>
+        <title>{fields.title} | Motivational Messages</title>
+        <meta name="description" content={description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={postUrl} />
+        <meta property="og:title" content={fields.title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={imageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={fields.title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
+      </Helmet>
+
+      <div className="min-h-screen bg-white">
+        <Navigation />
+        <div className="bg-gray-50 border-b border-gray-200 mt-16 md:mt-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <Link 
+              to="/motivational" 
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors group"
+            >
+              <FaArrowLeft className="text-sm transition-transform duration-300 group-hover:-translate-x-1" />
+              Back to all posts
+            </Link>
+          </div>
         </div>
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-20 md:pt-24">
+          <PostCard post={post} />
+        </main>
+        <Footer />
       </div>
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-20 md:pt-24">
-        <PostCard post={post} />
-      </main>
-      <Footer />
-    </div>
+    </>
   );
 }

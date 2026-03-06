@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export function useUser() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
+  // Read localStorage synchronously at initialization
+  const [user] = useState(() => {
     const stored = localStorage.getItem("user");
     if (stored) {
       try {
-        setUser(JSON.parse(stored));
+        return JSON.parse(stored);
       } catch {
         localStorage.removeItem("user");
+        return null;
       }
     }
-  }, []);
+    return null;
+  });
 
   return user;
 }
