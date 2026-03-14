@@ -3,8 +3,8 @@ import Navigation from "../components/navigation"
 import Footer from "../components/footer"
 import { FaEnvelope, FaPhone, FaGraduationCap, FaHeart } from "react-icons/fa"
 import Img3 from "../assets/img3.jpeg"
-import img2 from "../assets/leaderShip1.jpg"
-import img3 from "../assets/leaderShip2.jpg"
+import img2 from "../assets/leadership1.jpg"
+import img3 from "../assets/leadership2.jpg"
 import img4 from "../assets/mrbola.jpeg"
 
 
