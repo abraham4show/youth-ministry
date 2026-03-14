@@ -1,5 +1,4 @@
 
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Home from "./Pages/HomePage";
@@ -17,6 +16,7 @@ import Loader from "./components/Loader";
 import MotivationalPage from './Pages/MotivationalPage'
 import MotivationalPostPage from './Pages/MotivationalPostPage'
 import AdminMotivational from "./Pages/AdminMotivational";
+
 
 function App() {
   const [loading, setLoading] = useState(true);

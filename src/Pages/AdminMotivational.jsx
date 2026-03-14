@@ -115,9 +115,10 @@ export default function AdminMotivational() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-white">
-        <Navigation />
-        <div className="min-h-[60vh] flex items-center justify-center">
+      
+      <div className="min-h-screen bg-white ">
+                <Navigation />
+        <div className="min-h-[60vh] flex items-center justify-center mt-50">
           <div className="max-w-md w-full mx-auto px-4">
             <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
@@ -165,7 +166,7 @@ export default function AdminMotivational() {
     <div className="min-h-screen bg-white">
       <Navigation />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-20">
         <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
           <div className="h-2 bg-gradient-to-r from-green-500 to-green-600"></div>
 

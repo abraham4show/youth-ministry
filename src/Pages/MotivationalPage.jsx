@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
-import { getAllMotivationalPosts  } from "../contentfulDelivery";
+import { getAllMotivationalPosts } from "../contentfulDelivery.js";
 import { FaHeart, FaComment, FaShare, FaArrowRight, FaQuoteLeft } from "react-icons/fa";
 
 export default function MotivationalPage() {
