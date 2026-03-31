@@ -41,34 +41,16 @@ Spiritually, he grew through the Afunpe Sect of the Holy Flock of Christ, rising
 }
 ,
     
-  {
-  id: 3,
-  name: "Venerable Dr Jide Coker",
-  title: "Youth Chaplain, Holy Flock of Christ",
-  bio: "Venerable Dr Jide Coker was appointed by the Spiritual-Leader-in-Council to serve as the Youth Chaplain for the Holy Flock of Christ. In this role, he provides spiritual guidance and leadership advice to the HFC youths worldwide. He acts as a liaison between the Youth Group and the Council of Elders, coordinating monthly fatherly blessings and prayers. He participates in youth thanksgiving services and retreats, offers counseling to identified youths, and assists in mobilizing material and financial resources to support youth initiatives. Venerable Dr Coker also upholds discipline within the Youth Group, helps secure approvals for youth activities, and collaborates with the Youth Executive Committee in planning, implementing, and evaluating annual programs for spiritual and personal growth.",
-  image: img3,
-  // email: "david@leadershipflock.org",
-  // phone: "(234) 803-786-0784",
-  specialties: [
-    "Spiritual Leadership",
-    "Youth Guidance",
-    "Outreach Coordination",
-    "Program Planning",
-    "Counseling & Mentorship"
-  ],
+{
+  id: 2,
+  name: "Sorinwa A Adedayo John",
+  title: "National Youth President / coordinator",
+  bio: "Adedayo John Shorinwa is a devoted servant of God, a dynamic leader, and a passionate voice for the emerging generation. He holds a Bachelor’s degree in Accounting and is currently advancing his academic pursuit at the postgraduate level. A data analyst.\n\nA gifted music minister, he serves as both a music director and a versatile multi-instrumentalist, using his talents to glorify God and inspire worship. He is the visionary convener of Divine Encounter Through Praise and Worship(D.E.T.P.A.W), a powerful gathering that draws thousands of worshippers, creating an atmosphere of deep spiritual connection and revival.\n\nHe is also the Chief Executive Officer of Peculiar Breeds, a music band committed to excellence in church ministry and event performances, as well as the CEO of Royal Home Going Funerals, where he brings dignity and honor to life’s final journey and celebrations.\n\nCurrently serving as the President of the National Youth of The Holy Flock of Christ, Adedayo John Shorinwa stands as a beacon of hope and direction for young people. His passion for the next generation is evident in his commitment to guiding them onto the right path,\n\nraising leaders who will carry the banner of faith higher and brighter.\n\nA man of peace, unity, and vision, he deeply invests in nurturing potential, building capacity,\nshaping individuals into ambitious and impactful leaders who uphold God's standard.\n\nHis life and ministry remains a shining light, illuminating the path for others to follow in faith, purpose and excellence.",
+  image: img2, // make sure img2 is imported/defined
+  // email: "sorinwaj@gmail.com",
+  // phone: "(123) 802-976-0061",
+  specialties: ["Worship Leading", "Small Groups", "Community Building"],
 },
-
-    
-    {
-      id: 2,
-      name: "Sorinwa A Adedayo John",
-      title: "National Youth President / coordinator",
-      bio: "Pastor Lisa brings energy and creativity to our ministry. She specializes in worship leading and small group facilitation. Her heart for authentic community has helped countless young people find their place in God's family.",
-      image: img2,
-      // email: "sorinwaj@gmail.com",
-      // phone: "(123) 802-976-0061",
-      specialties: ["Worship Leading", "Small Groups", "Community Building"],
-    },
     
   ]
 
