@@ -89,7 +89,6 @@ export default function AdminMotivational() {
       bulletPoints: bulletPointsArray,
       closingMessage: closingMessage, // Now an object
       hashtags: hashtagsArray,
-      Likes: 0, // Capital L to match Contentful model
     };
 
     await createMotivationalPost(postData);
@@ -293,7 +292,7 @@ export default function AdminMotivational() {
                   )}
                 </button>
               </div>
-// Inside AdminMotivational.jsx, after successful creation, show:
+
 {message.type === "success" && (
   <div className="mt-4 p-3 bg-blue-50 rounded-lg flex items-center justify-between">
     <span className="text-sm text-blue-700">Post published! Share it:</span>
