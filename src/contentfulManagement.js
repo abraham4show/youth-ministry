@@ -19,7 +19,7 @@ export async function createMotivationalPost(postData) {
         bulletPoints: { "en-US": postData.bulletPoints },
         closingMessage: { "en-US": postData.closingMessage },
         hashtags: { "en-US": postData.hashtags },
-        Likes: { "en-US": postData.Likes },
+        // Likes: { "en-US": postData.Likes },
       },
     });
     const publishedEntry = await entry.publish();
