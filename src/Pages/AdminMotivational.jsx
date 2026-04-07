@@ -93,6 +93,10 @@ export default function AdminMotivational() {
 
     await createMotivationalPost(postData);
     setMessage({ type: "success", text: "Post published successfully!" });
+// Auto-clear after 5 seconds
+setTimeout(() => {
+  setMessage({ type: "", text: "" });
+}, 5000); 
     // Reset form
     setFormData({
       title: "",
